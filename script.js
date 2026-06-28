@@ -1,5 +1,7 @@
 const button = document.querySelector("#generate-btn");
 const paletteContainer = document.querySelector("#Palette-container");
+const copyIcons = document.querySelectorAll(".fa-copy");
+
 
 button.addEventListener("click",generatePalette);
 
@@ -31,8 +33,20 @@ function updatePalette(colours){
         const hexDiv = box.querySelector(".hex-value")
         colourDiv.style.backgroundColor = color;
         hexDiv.textContent= color;
+        
     })
 }
 
+function enableCopy() {
+  copyIcons.forEach(icon => {
+    icon.addEventListener("click", () => {
+      const hexValue = icon.previousElementSibling.textContent;
+      navigator.clipboard.writeText(hexValue).then(() => {
+        alert(`Copied ${hexValue} to clipboard!`);
+      });
+    });
+  });
+}
 
-
+generatePalette();
+enableCopy();
