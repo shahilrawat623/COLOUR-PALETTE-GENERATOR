@@ -103,3 +103,11 @@ h1::after{
     cursor: pointer;
     color: #64748b;
 }
+
+.fa-copy:hover{
+    color: #333;
+}
+
+.fa-copy:active{
+    transform: scale(.99);
+}
